@@ -27,7 +27,7 @@ module.exports = function (options, nunjucksEnv) {
         }
 
         var _this = this;
-        (nunjucksEnv ? nunjucksEnv : nunjucks).renderString(file.contents.toString(), data, function (err, result) {
+        (nunjucksEnv ? nunjucksEnv : nunjucks).renderString(file.contents.toString(), data, {path: file.path}, function (err, result) {
             if (err) {
                 _this.emit('error', new gutil.PluginError('gulp-nunjucks', err));
             }
